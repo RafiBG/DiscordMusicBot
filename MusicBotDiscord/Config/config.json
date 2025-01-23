@@ -1,0 +1,14 @@
+{
+  "token": "yourDiscordToken",
+  "prefix": "!",  //the symbol that starts the commands
+  "hostName": "lava-all.ajieblogs.eu.org",
+  "port": "443",
+  "password": "https://dsc.gg/ajidevserver",
+  "secured": "true"
+
+  // This file must be put in MusicBotDiscord\MusicBotDiscord\bin\Debug\net9.0
+
+  //If there is this error
+  //[Crit ] Failed to connect to Lavalink
+  //Change to other server or create one link : https://lavalink.darrennathanael.com/SSL/lavalink-with-ssl/#tunnelbroker-guide
+}
