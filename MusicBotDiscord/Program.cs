@@ -3,8 +3,9 @@ using DSharpPlus.CommandsNext;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Lavalink;
 using DSharpPlus.Net;
-using MusicBotDiscord.Commands;
+using DSharpPlus.SlashCommands;
 using MusicBotDiscord.Config;
+using MusicBotDiscord.SlashCommands;
 
 namespace MusicBotDiscord;
 public class Program
@@ -38,7 +39,16 @@ public class Program
         };
         
         Commands = Client.UseCommandsNext(commandsConfig);
-        Commands.RegisterCommands<MusicCommands>(); //register commands
+        // The line under if you want to use prefix uncomment it
+        //Commands.RegisterCommands<MusicCommands>(); //register commands with prefix symbol  ! 
+
+        var slashCommandConfig = Client.UseSlashCommands();
+        // For specific server also discord updates new changes faster
+        //slashCommandConfig.RegisterCommands<MusicSL>(guildId: 1317235767319199845);
+
+        // This may take up to 1 hour for discord to see the new changes and make it work
+        slashCommandConfig.RegisterCommands<MusicSL>();
+
         // Lavalink configuration
 
         //If there is this error
