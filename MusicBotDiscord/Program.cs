@@ -18,10 +18,14 @@ public class Program
         var jsonReader = new JSONReader();
         await jsonReader.ReadJSON();
 
+        if (string.IsNullOrWhiteSpace(jsonReader.token));
+        {
+            Console.WriteLine("The token in config.json is missing or invalid. Please provide a valid bot token.");
+        }
         var discordConfig = new DiscordConfiguration()
         {
             Intents = DiscordIntents.All,
-            Token = jsonReader.token,
+            Token = jsonReader?.token,
             TokenType = TokenType.Bot,
             AutoReconnect = true,
         };

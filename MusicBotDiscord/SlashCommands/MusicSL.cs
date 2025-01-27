@@ -37,6 +37,27 @@ namespace MusicBotDiscord.SlashCommands
                 return;
             }
 
+            // convert short YouTube URLs to full YouTube urls and remove additional query
+            // parameter from (?) to the end from short version of the urls
+            if (query.Contains("https://youtu.be/"))
+            {
+                var videoId = query.Replace("https://youtu.be/", "").Split('?')[0];
+                query = $"https://www.youtube.com/watch?v={videoId}";
+            }
+
+            // convert YouTube Music URLs to full YouTube urls
+            else if (query.Contains("https://music.youtube.com/"))
+            {
+                var videoId = query.Replace("https://music.youtube.com/", "").Split('&')[0];
+                query = $"https://www.youtube.com/watch?v={videoId}";
+            }
+
+            // remove additional query parameter (&list) for standard full YouTube urls
+            else if (query.Contains("https://www.youtube.com/watch?v="))
+            {
+                query = query.Split('&')[0];
+            }
+
             var node = lavalinkInstance.ConnectedNodes.Values.First();
             await node.ConnectAsync(userVC);
 
