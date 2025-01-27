@@ -25,7 +25,7 @@ public class Program
         var discordConfig = new DiscordConfiguration()
         {
             Intents = DiscordIntents.All,
-            Token = jsonReader?.token,
+            Token = jsonReader.token,
             TokenType = TokenType.Bot,
             AutoReconnect = true,
         };
