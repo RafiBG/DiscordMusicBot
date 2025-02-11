@@ -1,5 +1,6 @@
 ﻿using DSharpPlus;
 using DSharpPlus.CommandsNext;
+using DSharpPlus.Entities;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Lavalink;
 using DSharpPlus.Net;
@@ -75,13 +76,14 @@ public class Program
         var lavalink = Client.UseLavalink();
 
         // connect for the Bot to be online
-        await Client.ConnectAsync();
+        await Client.ConnectAsync(new DiscordActivity(" /help", ActivityType.ListeningTo));
         await lavalink.ConnectAsync(lavalinkConfig);
+
         await Task.Delay(-1);
     }
     private static Task Client_Ready(DiscordClient sender, DSharpPlus.EventArgs.ReadyEventArgs e)
     {
-        //Console.WriteLine("Bot is ready");
+        Console.WriteLine("Bot is ready");
         return Task.CompletedTask;
     }
 }

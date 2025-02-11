@@ -118,7 +118,7 @@ namespace MusicBotDiscord.SlashCommands
             }
         }
 
-        [SlashCommand("pause","For pausing the video")]
+        [SlashCommand("pause","For pausing the music")]
         public async Task PauseMusic(InteractionContext ctx)
         {
             await ctx.DeferAsync();
@@ -171,7 +171,7 @@ namespace MusicBotDiscord.SlashCommands
             await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(pausedEmbed));
         }
 
-        [SlashCommand("resume", "It resumes the video")]
+        [SlashCommand("resume", "It resumes the music")]
         public async Task ResumeMusic(InteractionContext ctx)
         {
             await ctx.DeferAsync();
@@ -278,7 +278,7 @@ namespace MusicBotDiscord.SlashCommands
             await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(stopEmbed));
         }
 
-        [SlashCommand("volume", "Changes the video volume")]
+        [SlashCommand("volume", "Changes the music volume")]
         public async Task ChangeVolume(InteractionContext ctx, [Option("number", "Enter a volume number")] long volume)
         {
             await ctx.DeferAsync();
@@ -329,6 +329,26 @@ namespace MusicBotDiscord.SlashCommands
             };
 
             await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(volumeEmbed));
+        }
+
+        [SlashCommand("help", "Show all the commands for the AI chat bot.")]
+        public async Task Help(InteractionContext ctx)
+        {
+            await ctx.DeferAsync();
+
+            var newSessionEmbed = new DiscordEmbedBuilder()
+            {
+                Color = DiscordColor.Green,
+                Title = "AI chat bot commands",
+                Description = "**/play** - Starts plaing the music that you give him in the voice channel \n" +
+                              "**/pause** - The music will be paused. \n" +
+                              "**/resume** - The music will be resumed.\n" +
+                              "**/stop** - The music will be stopped.\n" +
+                              "**/volume** - Change the music volume.\n" +
+                              "**/help** - Show all the commands for the bot"
+            };
+
+            await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(newSessionEmbed));
         }
     }
 }
