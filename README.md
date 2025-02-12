@@ -11,7 +11,7 @@ Now the Bot Permissions are shown in the image that you must check to work.
 In folder Config there is config.json add your Discord token then copy the whole file config.json and go to
 MusicBotDiscord\MusicBotDiscord\bin\Debug\net9.0 and paste it there also there is your MusicBotDiscord.exe
 to start the program. <br /> <br />
-If the you get in the console this error: [Crit ] Failed to connect to Lavalink change the config.json server or create one. <br /> Link: https://lavalink.darrennathanael.com/SSL/lavalink-with-ssl/#tunnelbroker-guide
+If you get in the console this error: [Crit ] Failed to connect to Lavalink change the config.json server or create one. <br /> Link: https://lavalink.darrennathanael.com/SSL/lavalink-with-ssl/#tunnelbroker-guide
 # New slash commands
 /play (name or YouTube link) <br />
 /pause <br />
